@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Bussines</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./uiverese.css">
+</head>
+
+<body>
+    <h1 class="title">Ласкаво просимо до веб-гри "Симулятор бізнесу"!</h1>
+    <h2 class="description">Щоб розпочати гру, підтвердьте свою згоду з правилами безпеки та оберіть бажаний ігровий
+        режим.</h2>
+
+        <div class="cwn">
+    <label class="container">
+        <input type="checkbox">
+        <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+                d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                pathLength="575.0541381835938" class="path"></path>
+        </svg>
+    </label>
+    <h2 class="text">Я ознайомився(-лася) з правилами гри та підтверджую свою згоду з умовами безпеки.</h2>
+</div>
+ <h2 class="text1">Оберіть режим:</h2>
+    <ul class="list">
+        <li id="first" class="item">
+            <div class="card">
+                <p class="heading">
+                     Кав'ярня
+                </p>
+                <p>
+                    У вас є 100 доларів на балансі. Ваша задача: Розвивати свій бізнес, закупати пордукти, робити каву, продавати, та робити підсумок тижня
+                </p>
+                <p>Обирають 65%
+                </p>
+            </div>
+        </li>
+        <li id="second" class="item">
+            <div class="card">
+                <p class="heading">
+                    З нуля
+                </p>
+                <p>
+                     У вас немає НІЧОГО. Ваший дядько дає вам випадкову суму грошей на яку ви повинні зробити бізнес. Ідея, назва, працівники - все ваша фантазія 
+                </p>
+                <p>Обирають 35%
+                </p>
+            </div>
+        </li>
+    </ul>
+    <button class="cafe_button" type="button">Кав'ярня</button>
+    <audio id="soundClickOnButton" src="./audio/spacebar-click-keyboard-199448.mp3" preload="auto"></audio>
+
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/cofee.js"></script>
+    <script type="module" src="./js/global-sound.js"></script>
+</body>
+
+</html>

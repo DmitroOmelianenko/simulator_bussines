@@ -1,0 +1,465 @@
+button {
+    cursor: pointer;
+}
+
+body {
+    background-image: url(../img/generated_image.jpg);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+     overflow-x: hidden;
+}
+
+.title {
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+}
+
+.start_game {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    width: 170px;
+    height: 50px;
+    margin-left: 600px;
+    transition: background-color 0.6s ease;
+}
+
+.start_game:hover {
+    background-color: black;
+    color: white;
+       box-shadow: 0 0 20px white;
+  transform: scale(1.05); 
+  cursor: pointer;
+  
+}
+
+.flex-balans {
+    background-color: black;
+    width: 220px;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: auto; 
+    margin-right: 0;   
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.balans-game {
+    color: rgb(255, 255, 255);
+    text-align: right;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0 5px;
+
+}
+
+.guide-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-display {
+    min-height: 100px; /* Забезпечуємо місце, щоб вміст не "стрибав" */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#stepNumber {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+#stepDescription {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+#nextStepBtn {
+    background-color: black;
+    color: white;
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
+
+#closeGuideBtn {
+     background-color: black;
+    color: white;
+    width: 90px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
+
+#openGuideBtn {
+    background-color:aquamarine;
+    border: none;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+}
+/* --- Модальне вікно --- */
+.modal-overlay {
+    position: fixed; /* Фіксує елемент відносно вікна перегляду */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Темний, напівпрозорий фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Розміщуємо поверх усього іншого */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    max-width: 90%; /* Для адаптивності */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Для можливого позиціонування елементів всередині */
+}
+
+.step-display {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%; /* Дозволяємо тексту займати всю ширину */
+}
+
+#stepNumber {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+#stepDescription {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Анімація з'явлення тексту */
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Клас для приховування/показу елементів */
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Щоб не можна було клікнути по прихованій кнопці */
+    /* display: none; також можна використовувати, але тоді не буде плавного зникнення */
+    position: absolute; /* Виймаємо з потоку, щоб не займало місце */
+}
+
+/* Якщо ви використовуєте display: none; для приховування модалки, то transition не буде */
+/* Якщо ви хочете плавність для .hidden, використовуйте visibility: hidden; та opacity: 0; */
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden; /* Додаємо visibility для плавного зникнення */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+/* Додайте це до вашого CSS файлу, щоб запобігти горизонтальному скролу */
+body {
+    overflow-x: hidden;
+}
+
+/* Стилі для кнопки "Налаштування" (використовуємо клас) */
+.setings_button {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 200px;
+    margin-top: -6px;
+}
+
+/* --- Бічна панель (меню налаштувань) --- */
+.side-menu {
+    height: 100%; /* Висота на весь екран */
+    width: 0; /* Початково нульова ширина, щоб приховати */
+    max-width: 40%; /* Максимальна ширина меню, щоб не займало весь екран */
+    position: fixed; /* Фіксує відносно вікна перегляду */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Темний фон меню */
+    overflow-x: hidden; /* Приховує горизонтальний скрол, якщо вміст більший */
+    padding-top: 60px; /* Місце для кнопки закриття */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Тінь для ефекту "виїзду" */
+    z-index: 1000; /* Розміщуємо поверх усього */
+    transition: width 0.3s ease-out; /* Плавний перехід по ширині */
+}
+
+/* Клас, який додається для показу бічного меню */
+.side-menu.active {
+    width: 40%; /* Розширюємо меню до 40% ширини екрану */
+}
+
+/* Стилі для посилань у бічному меню */
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #f1f1f1;
+    display: block; /* Щоб посилання займало всю ширину пункту */
+    transition: background-color 0.3s;
+}
+
+.side-menu ul li a:hover {
+    background-color: #575757;
+}
+
+/* Кнопка закриття бічного меню */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #f1f1f1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #ccc;
+}
+
+/* --- Оверлей для бічного меню (затемнює фон) --- */
+.side-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний */
+    z-index: 999; /* Повинен бути між основним контентом і меню */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.side-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Панель контенту, що виїжджає справа --- */
+.content-panel {
+    height: 100%;
+    width: 0; /* Початково нульова ширина, щоб приховати */
+    max-width: 50vw; /* Максимальна ширина: 50% від ширини вікна */
+    position: fixed;
+    top: 0;
+    right: 0; /* Виїжджає з правого краю */
+    background-color: white; /* Білий фон */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Тінь зліва */
+    z-index: 998; /* Під оверлеєм, але над основним контентом */
+    overflow-y: auto; /* Додаємо скрол, якщо контент не поміщається */
+    transition: width 0.3s ease-out; /* Плавний перехід по ширині */
+    padding-top: 50px; /* Відступ для кнопки закриття */
+    box-sizing: border-box; /* Щоб padding не збільшував загальну ширину */
+}
+
+/* Клас, який додається для показу панелі контенту */
+.content-panel.active {
+    width: 50vw; /* Розширюємо до 50% ширини екрану */
+}
+
+/* Кнопка закриття панелі контенту */
+.content-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #333; /* Колір для білого фону */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.content-close-btn:hover {
+    color: #000;
+}
+
+/* Стилі для внутрішнього контейнера контенту */
+#contentPanelInner {
+    padding: 20px;
+    color: #333;
+}
+
+#contentPanelInner h2 {
+    color: #007bff;
+    margin-top: 0;
+}
+
+/* Стилі для поля вводу та кнопки збереження */
+#bakeryNameInput {
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#saveBakeryNameBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 0;
+}
+#saveBakeryNameBtn:hover {
+    background-color: #218838;
+}
+
+/* Клас для приховування окремих секцій контенту всередині панелі */
+.panel-section.hidden {
+    display: none;
+}
+
+#name_cafe {
+    color: white;
+    text-align: center;
+}
+
+.name_cafe-box {
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_plus {
+    background-color: #fff700;
+    border: solid black 2px;
+    width: 100px;
+    height: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+    margin-left: 100px;
+}
+
+/* Стилі для кнопки, що відкриває меню */
+
+
+/* Стилі для випадаючого списку (оверлея) */
+.overlay {
+    height: 100%;
+    width: 0; /* Початкова ширина 0, щоб приховати */
+    position: fixed;
+    z-index: 1; /* Поверх іншого контенту */
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0); /* Чорний з прозорістю */
+    background-color: rgba(0,0,0, 0.9); /* Чорний з більшою прозорістю */
+    overflow-x: hidden; /* Запобігаємо горизонтальній прокрутці */
+    transition: 0.5s; /* Плавний перехід при відкритті/закритті */
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%; /* Відступ зверху */
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Кожен пункт на новому рядку */
+    transition: 0.3s; /* Плавний перехід при наведенні */
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1; /* Змінюємо колір при наведенні */
+}
+
+/* Кнопка закриття */
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important; /* Важливе правило для розміру */
+    color: #f1f1f1 !important; /* Важливе правило для кольору */
+}
+
+/* Адаптивні стилі для мобільних пристроїв */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.coffe_img-products {
+    width: 180px;
+}
