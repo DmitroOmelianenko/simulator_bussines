@@ -1,3 +1,5 @@
+import { coffeeIngredients } from "api/objects.js";
+
 const myAudio = document.getElementById("soundClickOnButton");
 const buttonLink = document.querySelector("button");
 
@@ -316,3 +318,4 @@ document.addEventListener('DOMContentLoaded', () => {
     openButton.addEventListener('click', openNav);
     closeButton.addEventListener('click', closeNav);
 });
+
